@@ -1,0 +1,101 @@
+.shop-container {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 992px) {
+    flex-direction: column;
+  }
+  .side-bar-container {
+    margin-right: 35px;
+    width: 300px;
+    height: 100vh;
+    overflow: hidden;
+    @media screen and (max-width: 992px) {
+      width: 100vw;
+      margin-right: 0;
+      margin-bottom: 100px;
+    }
+    .side-bar {
+      @media screen and (max-width: 992px) {
+        width: 100vw;
+        position: relative;
+      }
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      background-color: #f9f9f9;
+      border-right: 1px solid #707070;
+      height: 100vh;
+      width: 300px;
+      padding: 30px;
+      z-index: 5;
+      .character-details-container {
+        .character-details {
+          p {
+            padding: 5px;
+            background-color: white;
+          }
+        }
+      }
+      .cart-container {
+        @media screen and (max-width: 992px) {
+          height: 40vh;
+        }
+        display: flex;
+        flex-direction: column;
+        margin-top: 15px;
+        .cart-heading {
+          border-bottom: 1px solid #707070;
+        }
+        .cart-details {
+          overflow: scroll;
+          overflow-x: hidden;
+          height: 30vh;
+          img {
+            width: 20px;
+            height: auto;
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+        .submit-container{
+          margin-top: auto;
+          padding-bottom: 10px;
+        }
+      }
+      .nav-container {
+        margin-top: auto;
+      }
+    }
+  }
+}
+
+// ITEMS ARE HERE
+.item-card {
+  @media screen and (max-width: 992px) {
+    width: 250px;
+  }
+  overflow: hidden;
+  width: 300px;
+  height: 500px;
+  padding: 30px;
+  margin: 15px;
+  border: 1px solid #707070;
+  .item-image {
+    text-align: center;
+    img {
+      width: 175px;
+      height: auto;
+    }
+  }
+  .item-details {
+    padding-top: 25px;
+    text-align: center;
+    margin: 10px;
+    margin-top: 0;
+    p {
+      margin: 0;
+    }
+  }
+}

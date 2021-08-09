@@ -1,0 +1,51 @@
+.nav-button {
+  @media screen and (max-width: 992px) {
+    width: 150px;
+  }
+  border-radius: 5px;
+  width: 250px;
+  margin-top: auto;
+  height: 75px !important;
+  font-size: 1.7rem;
+  font-weight: 400;
+  background-color: gainsboro;
+  color: black;
+  border: 1px solid #707070;
+  &:hover {
+    background-color: #9bd3b1 !important;
+    transition: all 0.5s ease-in-out !important;
+  }
+}
+
+.cart-button {
+  align-self: center;
+  border-radius: 5px;
+  margin-top: auto;
+  width: 80px;
+  height: 30px;
+  font-size: 1rem;
+  font-weight: 400;
+  background-color: gainsboro;
+  color: black;
+  border: 1px solid #707070;
+  &:hover {
+    background-color: #9bd3b1 !important;
+    transition: all 0.5s ease-in-out !important;
+  }
+}
+
+.item-button {
+  border-radius: 5px;
+  margin-top: auto;
+  width: 100%;
+  height: 50px;
+  font-size: 1rem;
+  font-weight: 400;
+  background-color: gainsboro;
+  color: black;
+  border: 1px solid #707070;
+  &:hover {
+    background-color: #9bd3b1 !important;
+    transition: all 0.3s ease-in-out !important;
+  }
+}

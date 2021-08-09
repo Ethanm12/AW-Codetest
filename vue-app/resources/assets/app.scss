@@ -1,0 +1,12 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";   
+  
+//Utils
+@import "./utils/buttons.scss"; 
+         
+//Base 
+@import "base/base";         
+     
+//Pages  
+@import "pages/home.scss";     
+@import "pages/store.scss";
+@import "pages/inventory.scss";              

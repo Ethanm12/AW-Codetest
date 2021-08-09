@@ -1,0 +1,38 @@
+
+
+.home-container {
+  text-align: center;
+  overflow: hidden;
+  padding: 40px 0;
+  .welcome-message {
+    padding: 20px 10px; 
+  }
+
+  .menu-item {
+    display: flex;
+    background-color: gainsboro;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px;
+    padding: 0 20px;
+    height: 400px;
+    width: auto;
+    text-align: center;
+    border: 1px solid #707070;
+    border-radius: 5px;
+    &:hover {
+        background-color: #9bd3b1 !important;
+        transition: all 0.5s ease-in-out !important;
+      }
+    img{
+        margin: 30px;
+        width: auto;
+        height: 150px;
+    }
+    h2{
+        margin-top: 15px;
+        text-align: start;
+
+    }
+  }
+}
