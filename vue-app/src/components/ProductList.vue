@@ -3,7 +3,7 @@
     <div class="row">
       <div
         class="col-md-6 col-lg-4 d-flex justify-content-center"
-        v-for="(item, index) in items"
+        v-for="(item, index) in items.equipment"
         :key="index"
       >
         <div class="item-card">
@@ -54,7 +54,7 @@ export default Vue.extend({
 
   computed: {
     ...mapGetters({
-      items: "getAllEquipment",
+      items: "getEquipment",
     }),
   },
 

@@ -8,12 +8,12 @@
 import { Vue } from "vue-property-decorator";
 
 export default Vue.extend({
-  data: () => ({}),
 
   async mounted() {
     await this.$store.dispatch("setCharacter");
     await this.$store.dispatch("setEquipment");
   },
+  
 });
 </script>
 
