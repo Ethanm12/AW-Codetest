@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts">
-import { mapState, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 import ProductList from "../components/ProductList.vue";
 import Cart from "../components/Cart.vue";
 import Vue from "vue";
@@ -36,12 +36,10 @@ export default Vue.extend({
   components: { ProductList, Cart },
 
   computed: {
-    ...mapState({
-      items: "getAllEquipment",
-    }),
     ...mapGetters({
       viewCart: "getCartItems",
       character: "getCharacterDetails",
+      items: "getAllEquipment",
     }),
   },
 });

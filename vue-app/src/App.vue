@@ -13,7 +13,6 @@ export default Vue.extend({
   async mounted() {
     await this.$store.dispatch("setCharacter");
     await this.$store.dispatch("setEquipment");
-    await this.$store.dispatch("setCharacterName");
   },
 });
 </script>
