@@ -1,35 +1,45 @@
 import { MutationTree } from "vuex";
-import { CartModel } from "./types";
+import { CartModel, EquipmentModel } from "./types";
+
+export enum CartMutation {
+  addErrorMessage   = "addErrorMessage",
+  clearCart         = "clearCart",
+  clearCartValue    = "clearCartValue",
+  addCartItem       = "addCartItem",
+  addCartValue      = "addCartValue",
+  removeItem        = "removeItem",
+  removeCartValue   = "removeCartValue"
+}
 
 
 export const mutations: MutationTree<CartModel> = {
-  addErrorMessage(state, payload) {
+  [CartMutation.addErrorMessage](state: CartModel, payload: string) {
     state.cartErrorMessage = payload;
   },
 
-  clearCart(state) {
+  [CartMutation.clearCart](state: CartModel) {
     state.cartItems = [];
   },
 
-  clearCartValue(state) {
+  [CartMutation.clearCartValue](state: CartModel) {
     state.cartValue = 0;
   },
 
-  addCartItem(state, payload) {
+  [CartMutation.addCartItem](state: CartModel, payload: EquipmentModel)  {
     state.cartItems.push(payload);
     state.cartCount++;
   },
 
-  addCartValue(state, payload) {
+  [CartMutation.addCartValue](state: CartModel, payload: number) {
     state.cartValue += payload;
   },
 
-  removeItem(state, payload) {
+  [CartMutation.removeItem](state: CartModel, payload: number) {
     state.cartItems.splice(payload, 1);
     state.cartCount--;
   },
 
-  removeCartValue(state, payload) {
+  [CartMutation.removeCartValue](state: CartModel, payload: number) {
     state.cartValue -= payload;
   },
 };

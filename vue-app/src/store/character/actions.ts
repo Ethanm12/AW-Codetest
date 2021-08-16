@@ -4,35 +4,37 @@ import { RootState } from "../types";
 import { CharacterState } from "./types";
 import { uniqueNamesGenerator, starWars } from "unique-names-generator";
 
-
 export const actions: ActionTree<CharacterState, RootState> = {
-
   async setCharacter({ commit }): Promise<void> {
     const character = await getCharacter();
+    if(character){
       const shortName = uniqueNamesGenerator({
         dictionaries: [starWars],
       });
       character.name = shortName;
-    
-    commit("addCharacterData", character);
+      
+      commit("addCharacterData", character);
+    }
   },
 
   async updateCharacter({ commit, state }): Promise<void> {
-    const characterData = await getCharacter() as CharacterModel;
-    const character = {} as CharacterModel;
-    console.log(state);
-    character.name = state.name;
-    character.wealth = characterData.wealth;
-    character.luck = characterData.luck;
-    character.hitPoints = characterData.hitPoints;
-    character.equipment = characterData.equipment;
+    const characterData = (await getCharacter()) as CharacterModel;
+    if (characterData) {
+      const character = {} as CharacterModel;
 
-    if (character.equipment.length >= 0) {
-      for (let i = 0; i < character.equipment.length; i++) {
-        character.luck += characterData.equipment[i].luckModifier;
-        character.hitPoints += characterData.equipment[i].hpModifier;
+      character.name = state.name;
+      character.wealth = characterData.wealth;
+      character.luck = characterData.luck;
+      character.hitPoints = characterData.hitPoints;
+      character.equipment = characterData.equipment;
+
+      if (character.equipment.length >= 0) {
+        for (let i = 0; i < character.equipment.length; i++) {
+          character.luck += characterData.equipment[i].luckModifier;
+          character.hitPoints += characterData.equipment[i].hpModifier;
+        }
       }
+      commit("addCharacterData", character);
     }
-    commit("addCharacterData", character);
   },
 };

@@ -6,7 +6,7 @@ export enum characterMutations {
 }
 
 export const mutations: MutationTree<CharacterState> = {
-  [characterMutations.addCharacterData](state, payload: CharacterState) {
+  [characterMutations.addCharacterData](state: CharacterState, payload: CharacterState) {
     state.name = payload.name;
     state.luck = payload.luck;
     state.equipment = payload.equipment;

@@ -4,10 +4,11 @@ import { RootState } from "@/store/types";
 import { postItems } from "@/apiRequests";
 
 export const actions: ActionTree<CartModel, RootState> = {
-  addItemToCart({ commit, state }, payload) {
+  addItemToCart({ commit, state }, payload: EquipmentModel): void {
     let errorMessage = "";
-    commit("addErrorMessage", errorMessage);
     const found = state.cartItems.findIndex((item) => item.id === payload.id);
+
+    commit("addErrorMessage", errorMessage);
     if (found != -1) {
       errorMessage = "Item already in Cart";
       commit("addErrorMessage", errorMessage);
@@ -17,9 +18,10 @@ export const actions: ActionTree<CartModel, RootState> = {
     }
   },
 
-  async checkout({ commit, dispatch, state, rootState }) {
+  async checkout({ commit, dispatch, state, rootState }): Promise<void> {
     let payload = "";
     let errorMessage = "";
+    
     commit("addErrorMessage", errorMessage);
     if (state.cartValue > rootState.character.wealth) {
       errorMessage = "You do not have enough Wealth";
@@ -28,28 +30,28 @@ export const actions: ActionTree<CartModel, RootState> = {
       for (let i = 0; i < state.cartItems.length; i++) {
         payload = state.cartItems[i].id;
         await postItems({ equipmentId: payload }).catch(() => {
-            errorMessage = "You cannot purchase items";
-            commit("addErrorMessage", errorMessage);
+          errorMessage = "You cannot purchase items";
+          commit("addErrorMessage", errorMessage);
         });
+        dispatch("removeListedProducts", state.cartItems);
       }
     }
+
     commit("clearCart");
     commit("clearCartValue");
-    dispatch('setEquipment');
     dispatch("updateCharacter");
   },
 
-  removeFromCart({ state, commit }, payload: EquipmentModel) {
+  removeFromCart({ state, commit }, payload: EquipmentModel): void {
     const itemIndex = state.cartItems.findIndex(
       (item) => item.id === payload.id
     ) as number;
     const findItem = state.cartItems.find(
-        (item) => item.id === payload.id) as EquipmentModel;
-    console.log(findItem);
-
+      (item) => item.id === payload.id
+    ) as EquipmentModel;
     let errorMessage = "";
-    commit("addErrorMessage", errorMessage);
 
+    commit("addErrorMessage", errorMessage);
     if (itemIndex !== -1) {
       commit("removeItem", itemIndex);
       commit("removeCartValue", findItem.value);

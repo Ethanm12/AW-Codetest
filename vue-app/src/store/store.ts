@@ -9,8 +9,6 @@ Vue.use(Vuex);
 
 const store: StoreOptions<RootState> = {
 
-    
-
     modules: {
         character,
         cart,

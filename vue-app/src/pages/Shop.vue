@@ -39,7 +39,6 @@ export default Vue.extend({
     ...mapGetters({
       viewCart: "getCartItems",
       character: "getCharacterDetails",
-      items: "getEquipment",
     }),
   },
 });
